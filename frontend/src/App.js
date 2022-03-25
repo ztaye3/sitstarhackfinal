@@ -41,7 +41,7 @@ import AddSlider from "./component/Admin/Slider/AddSlider";
 import Profile from "./component/User/Profile";
 import Terms from "./static/pages/Terms";
 import Contact from "./static/pages/Contact";
-
+import 'react-toastify/dist/ReactToastify.css'
 
 /* Check if server is running in development or production*/
 if (window.location.origin === BASE_FRONTEND_URL) {

@@ -17,3 +17,16 @@ PyJWT==1.7.1
 Pillow >= 8.0
 django-enumchoicefield >= 2.0.0
 stripe
+
+click==8.0.4
+colorama==0.4.4
+Jinja2
+joblib==1.1.0
+MarkupSafe
+numpy
+pandas
+python-dateutil
+scikit-learn
+scipy
+threadpoolctl
+Werkzeug

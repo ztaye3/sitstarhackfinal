@@ -1,8 +1,9 @@
 import axios from "axios";
 import {ADD_USER_URL, GET_USER_URL, SIGNUP_URL, USER_PROFILE_URL, USER_URL} from "../../../utils/Constant";
 import {push} from "connected-react-router";
+import {toast, ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-import {toast} from "react-toastify";
 import {errorFilter, isEmptyUtils} from "../../../utils/Utils";
 import {CREATE_USER_ERROR, CREATE_USER_SUCCESS} from "../../signup/signupType";
 import {
@@ -78,10 +79,10 @@ const book = userInput => dispatch => {
         .post("/api/bike/v1/book/", formData)
         .then(response => {
              dispatch({type: BOOK_SUCCESS})
-            toast.success(
+             dispatch( toast.success(
 
                   " Trip booked successfully!"
-              )
+              ))
              dispatch(push("/"))
         })
         .catch(error => {

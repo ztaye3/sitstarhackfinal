@@ -1,6 +1,7 @@
 import {CREATE_USER_SUBMIT, CREATE_USER_SUCCESS, CREATE_USER_ERROR} from "../../signup/signupType";
 import {isEmptyUtils} from "../../../utils/Utils";
 import {
+    BOOK_SUCCESS,
     DELETE_USER_FAIL,
     DELETE_USER_SUCCESS,
     GET_ALL_USER_FAIL,
@@ -25,7 +26,8 @@ const initialState = {
     // "from": "KJ",
     // "to": "SH",
     //  "probability": "High"
-    }
+    },
+    is_trip_success: false
 }
 
 // Signup reducer
@@ -34,7 +36,13 @@ const addUserReducer = (state = initialState, action) =>{
                 case SEARCH_CONNECTION_SUCCESS:
             return {
                 ...state,
-                connections: action.payload
+                connections: action.payload,
+                is_trip_success: false
+            }
+            case BOOK_SUCCESS:
+            return {
+                ...state,
+                is_trip_success: true
             }
         case CREATE_USER_SUBMIT:
             return {

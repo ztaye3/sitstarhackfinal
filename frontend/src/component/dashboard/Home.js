@@ -336,6 +336,9 @@ class Search extends Component {
                                             <Grid item>
                                                 <Typography style={{color: 'white'}}>{ " Number of Search:   "}{connections.number_of_search}</Typography>
                                             </Grid>
+                                                        <Grid item>
+                                                <Typography style={{color: 'white'}}>{ " Is booked:   "}{this.props.booking.is_trip_success}</Typography>
+                                            </Grid>
                                 </Grid>
                                                     <Grid container wrap="nowrap"  spacing={10} style={{marginTop: "10px"}}>
                                             <Grid item style={{marginTop: "20px"}}>
@@ -416,6 +419,13 @@ class Search extends Component {
                   alignItems="flex-end"
                   justify="center"
                 >
+                    {
+                        this.props.booking.is_trip_success === true ? (
+                            <Typography style={{ fontWeight: 600, color: "white" }}>
+                                Tripe successfully booked!
+                            </Typography>
+                        ): ""
+                    }
                   {/*<Typography>Bottom Center</Typography>*/}
                 </Grid>
               </Grid>

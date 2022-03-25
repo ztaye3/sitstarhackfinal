@@ -1,0 +1,19 @@
+django-cors-headers==3.5.0
+pika==1.1.0
+packaging==16.8
+pyparsing==2.2.0
+pytz==2017.2
+six==1.10.0
+appdirs==1.4.3
+
+django==3.2.4
+djoser==2.0.5
+djangorestframework==3.11.2
+markdown==3.3
+django-filter==2.4.0
+psycopg2-binary>=2.8
+djangorestframework-simplejwt==4.4.0
+PyJWT==1.7.1
+Pillow >= 8.0
+django-enumchoicefield >= 2.0.0
+stripe

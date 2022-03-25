@@ -1,0 +1,46 @@
+version: '3.3'
+
+services:
+    db:
+        image: postgres
+        restart: always #Prevent postgres from stopping the container
+        volumes:
+            - ./data/db:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        ports:
+            - 5432:5432
+
+    nginx:
+        #restart: unless-stopped
+        build:
+            context: .
+            dockerfile: ./docker/nginx/Dockerfile
+        ports:
+            - 80:80
+        volumes:
+            - static_volume:/code/backend/server/django_static
+            - ./docker/nginx/development:/etc/nginx/conf.d
+        depends_on:
+            - backend
+    backend:
+        #restart: unless-stopped
+        build:
+            context: .
+            dockerfile: ./docker/backend/Dockerfile
+
+        entrypoint: /code/docker/backend/wsgi-entrypoint.sh
+        volumes:
+            - .:/code
+            - static_volume:/code/backend/server/django_static
+        expose:
+            - 8000
+        depends_on:
+            -   db
+
+volumes:
+    static_volume: { }
+    pgdata: { }
+

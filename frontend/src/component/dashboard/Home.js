@@ -336,9 +336,7 @@ class Search extends Component {
                                             <Grid item>
                                                 <Typography style={{color: 'white'}}>{ " Number of Search:   "}{connections.number_of_search}</Typography>
                                             </Grid>
-                                                        <Grid item>
-                                                <Typography style={{color: 'white'}}>{ " Is booked:   "}{this.props.booking.is_trip_success}</Typography>
-                                            </Grid>
+
                                 </Grid>
                                                     <Grid container wrap="nowrap"  spacing={10} style={{marginTop: "10px"}}>
                                             <Grid item style={{marginTop: "20px"}}>

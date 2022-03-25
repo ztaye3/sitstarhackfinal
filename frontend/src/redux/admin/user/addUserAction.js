@@ -79,10 +79,10 @@ const book = userInput => dispatch => {
         .post("/api/bike/v1/book/", formData)
         .then(response => {
              dispatch({type: BOOK_SUCCESS})
-             dispatch( toast.success(
-
-                  " Trip booked successfully!"
-              ))
+             // dispatch( toast.success(
+             //
+             //      " Trip booked successfully!"
+             //  ))
              dispatch(push("/"))
         })
         .catch(error => {

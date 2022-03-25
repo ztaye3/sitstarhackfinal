@@ -17,7 +17,7 @@ import authentication from "./utils/Authentication";
 import {BASE_BACKEND_URL, BASE_FRONTEND_URL, STRIPE_PUB_KEY} from "./utils/Constant";
 import Activate from "./component/signup/Activate";
 import Logout from "./component/logout/Logout";
-import Home from "./component/Home/Home"
+import Home from "./component/dashboard/Home"
 import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
 import AdminProduct from "./component/Admin/AdminProduct";
@@ -65,7 +65,10 @@ export default function App() {
                 <div>
 
                   <Switch>
-
+                    <Route exact strict path="/">
+                      <Home />
+                    </Route>
+                    <Route path="/home" component={Home}/>
                     <Route  exact path="/activate/:uid/:token" component={Activate}/>
 
                     <Route path="/login" component={Login}/>
@@ -83,10 +86,7 @@ export default function App() {
                   </Switch>
 
                   <Switch>
-                    <Route exact strict path="/">
-                      <Home />
-                    </Route>
-                    <Route path="/home" component={Home}/>
+
                     <Route exact path="/logout">
                       <Logout />
                     </Route>

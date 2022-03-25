@@ -4,7 +4,7 @@ import {
     DELETE_USER_FAIL,
     DELETE_USER_SUCCESS,
     GET_ALL_USER_FAIL,
-    GET_ALL_USER_SUCCESS, UPDATE_USER_FAIL,
+    GET_ALL_USER_SUCCESS, SEARCH_CONNECTION_SUCCESS, UPDATE_USER_FAIL,
     UPDATE_USER_SUCCESS
 } from "./type";
 
@@ -15,12 +15,27 @@ const initialState = {
     re_passwordError: "",
     first_nameError: "",
     last_nameError: "",
-    users : []
+    users : [],
+      connections: {
+    //         "train_number": "123",
+    // "free_space": 4,
+    // "number_of_search": 4,
+    // "is_departure": "true",
+    // "selectedDate": "1998-09-21 12:08:01",
+    // "from": "KJ",
+    // "to": "SH",
+    //  "probability": "High"
+    }
 }
 
 // Signup reducer
 const addUserReducer = (state = initialState, action) =>{
     switch (action.type){
+                case SEARCH_CONNECTION_SUCCESS:
+            return {
+                ...state,
+                connections: action.payload
+            }
         case CREATE_USER_SUBMIT:
             return {
 

@@ -8,8 +8,7 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('identity.urls')),
-    path('api/product/', include('product.urls')),
-    path('api/order/', include('order.urls'))
+    path('api/bike/', include('bike.urls'))
 
 ]
 urlpatterns += static(settings.MEDIA_URL,

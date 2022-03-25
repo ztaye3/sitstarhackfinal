@@ -6,10 +6,12 @@ import {toast} from "react-toastify";
 import {errorFilter, isEmptyUtils} from "../../../utils/Utils";
 import {CREATE_USER_ERROR, CREATE_USER_SUCCESS} from "../../signup/signupType";
 import {
+    BOOK_FAIL,
+    BOOK_SUCCESS,
     DELETE_USER_FAIL,
     DELETE_USER_SUCCESS,
     GET_ALL_USER_FAIL,
-    GET_ALL_USER_SUCCESS, UPDATE_USER_FAIL,
+    GET_ALL_USER_SUCCESS, SEARCH_CONNECTION_FAIL, SEARCH_CONNECTION_SUCCESS, UPDATE_USER_FAIL,
     UPDATE_USER_SUCCESS
 } from "./type";
 import {SET_CURRENT_USER} from "../../login/loginType";
@@ -24,6 +26,70 @@ const addUserAction = (userInput, operation) => dispatch => {
             dispatch(updateUser(userInput))
         else if( operation === "getAllUser")
             dispatch(getAllUser())
+           else if(operation === "SEARCH_CONNECTIONS")
+            dispatch(searchConnection(userInput))
+        else if(operation === "BOOK")
+            dispatch(book(userInput))
+}
+
+
+// Add User
+const searchConnection = userInput => dispatch => {
+
+
+     const formData = new FormData();
+
+        formData.append("from", userInput.from);
+        formData.append("to", userInput.to);
+        formData.append("selectedDate", userInput.selectedDate);
+        formData.append("is_departure", userInput.is_departure);
+
+
+        axios
+        .post("/api/bike/v1/searchConnection", formData)
+        .then(response => {
+             dispatch({type: SEARCH_CONNECTION_SUCCESS, payload: response.data})
+
+             dispatch(push("/"))
+        })
+        .catch(error => {
+             errorFilter(error)
+             dispatch({type: SEARCH_CONNECTION_FAIL,
+                       errorData: error.response.data})
+        })
+
+}
+
+const book = userInput => dispatch => {
+
+
+     const formData = new FormData();
+
+        formData.append("departure", userInput.from);
+        formData.append("arrival", userInput.to);
+        formData.append("selectedDate", userInput.selectedDate);
+        formData.append("is_departure", userInput.is_departure);
+        formData.append("train_number", userInput.train_number);
+        formData.append("reserve", userInput.reserve);
+
+        console.log("final test", userInput)
+
+        axios
+        .post("/api/bike/v1/book/", formData)
+        .then(response => {
+             dispatch({type: BOOK_SUCCESS})
+            toast.success(
+
+                  " Trip booked successfully!"
+              )
+             dispatch(push("/"))
+        })
+        .catch(error => {
+             errorFilter(error)
+             dispatch({type: BOOK_FAIL,
+                       errorData: error.response.data})
+        })
+
 }
 
 

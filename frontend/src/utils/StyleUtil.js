@@ -2,7 +2,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
-import background from '../static/background/sefed-beckground.jpg'
+import background from '../static/background/wallpaper.jpg'
 
 
 export const useStyles = makeStyles((theme) => ({
